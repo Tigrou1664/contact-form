@@ -59,13 +59,15 @@ class HomeController extends AbstractController
 
             // Send email to admin
             $mailer->sendEmail(
-                subject: 'Demande de contact de ' . $contactMessage->getContactUser()->getEmail(),
-                content: $contactMessage->getContactUser()->getFullname() . ' vous a envoyé le message suivant : ' . $contactMessage->getMessage()
+                subject: $translator->trans('mailer.subject', [
+                    '%email%' => $contactMessage->getContactUser()->getEmail(),
+                ]),
+                content: $translator->trans('mailer.content', [
+                    '%name%' => $contactMessage->getContactUser()->getFullname(),
+                ]) . $contactMessage->getMessage()
             );
 
-            $this->addFlash('success', "Message envoyé avec succès !");
-
-            return $this->redirectToRoute('app_home');
+            flash()->addSuccess($translator->trans('flash.message.send.success'));
         }
         return $this->render('pages/home.html.twig', [
             'form' => $form->createView()

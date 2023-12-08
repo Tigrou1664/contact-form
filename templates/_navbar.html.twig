@@ -1,0 +1,23 @@
+<header id="header" class="fixed-top header-scrolled">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="{{ path('app_home') }}">Arsha</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <!-- NAVBAR -->
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="{{ path('app_home') }}">{{ 'navbar.home'|trans }}</a></li>
+                <li><a class="nav-link scrollto" href="#about">{{ 'navbar.about'|trans }}</a></li>
+                <li><a class="nav-link scrollto" href="#services">{{ 'navbar.services'|trans }}</a></li>
+                <li><a class="nav-link scrollto" href="#portfolio">{{ 'navbar.portfolio'|trans }}</a></li>
+                <li><a class="nav-link scrollto" href="#team">{{ 'navbar.team'|trans }}</a></li>
+                <li><a class="nav-link scrollto" href="#contact">{{ 'navbar.contact'|trans }}</a></li>
+                <li><a class="getstarted" href="#"><span>{{ 'navbar.signin'|trans }}</span></a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+</header>

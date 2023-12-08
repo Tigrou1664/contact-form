@@ -1,6 +1,26 @@
+navbar.home: Accueil
+navbar.about: Infos
+navbar.services: Services
+navbar.portfolio: Réalisations
+navbar.team: la Team
+navbar.contact: Contact
+navbar.signin: Connexion
+
+hero.title: Les meilleures solutions pour votre business
+hero.text: Si ça vous a plu ? N'hésitez pas à me contacter, je suis à la recherche d'un job ;)
+
+button.getStarted: Démarrez
+button.watchVideo: Lancez vidéo
+
 form.contact.title: Contactez-nous
 form.contact.firstname: Prénom
 form.contact.lastname: Nom
 form.contact.email: Email
 form.contact.message: Tapez votre message ici...
 form.contact.submit: Envoyer
+
+page.home.title: Site de démo
+
+flash.message.send.success: Votre message a bien été envoyé
+mailer.subject: Demande de contact de %email%
+mailer.content: '%name% vous a envoyé le message suivant : '
