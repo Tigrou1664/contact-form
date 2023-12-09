@@ -5,6 +5,10 @@ navbar.portfolio: Réalisations
 navbar.team: la Team
 navbar.contact: Contact
 navbar.signin: Connexion
+navbar.admin.title: Admin
+navbar.admin.welcome: Salut %name%
+navbar.admin.inbox: Boite de réception
+navbar.admin.logout: Se déconnecter
 
 hero.title: Les meilleures solutions pour votre business
 hero.text: Si ça vous a plu ? N'hésitez pas à me contacter, je suis à la recherche d'un job ;)
@@ -18,8 +22,16 @@ form.contact.lastname: Nom
 form.contact.email: Email
 form.contact.message: Tapez votre message ici...
 form.contact.submit: Envoyer
+form.login.loggedInAs: Vous êtes connecté en tant que %identifier%
+form.login.logout: Se déconnecter
+form.login.title: Veuillez vous connecter
+form.login.email: Email
+form.login.password: Password
+form.login.submit: Connexion
 
 page.home.title: Site de démo
+page.login.title: Connexion
+page.admin.title: Administration
 
 flash.message.send.success: Votre message a bien été envoyé
 mailer.subject: Demande de contact de %email%

@@ -14,7 +14,18 @@
                 <li><a class="nav-link scrollto" href="#portfolio">{{ 'navbar.portfolio'|trans }}</a></li>
                 <li><a class="nav-link scrollto" href="#team">{{ 'navbar.team'|trans }}</a></li>
                 <li><a class="nav-link scrollto" href="#contact">{{ 'navbar.contact'|trans }}</a></li>
-                <li><a class="getstarted" href="#"><span>{{ 'navbar.signin'|trans }}</span></a></li>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li class="nav-item dropdown"><a class="getstarted" href="#"><span>{{ 'navbar.admin.title'|trans }}</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item title">{{ 'navbar.admin.welcome'|trans({'%name%': app.user.pseudo}) }}</li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ path('admin_home') }}">Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'navbar.admin.logout'|trans }}</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a class="getstarted" href="{{ path('app_login') }}"><span>{{ 'navbar.signin'|trans }}</span></a></li>
+                {% endif %}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

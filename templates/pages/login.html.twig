@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page.home.title'|trans }}{% endblock %}
+
+{% block body %}
+
+<!-- HERO SECTION -->
+<section id="hero" class="first-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+
+                <!-- LOGIN FORM -->
+                <form method="post">
+                    <div class="mb-3">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                {{ 'form.login.loggedInAs'|trans({'%identifier%': app.user.userIdentifier}) }}, <a href="{{ path('app_logout') }}">{{ 'form.login.logout'|trans }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h1 class="h3 mb-3 font-weight-normal text-white">{{ 'form.login.title'|trans }}</h1>
+                    <div class="form-floating mb-3">
+                        <input type="email" value="{{ last_username }}" name="email" id="floatingInput" class="form-control" placeholder="spiderman@marvel.com" autocomplete="email" required autofocus>
+                        <label for="floatingInput">{{ 'form.login.email'|trans }}</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" id="floatingPassword" class="form-control" placeholder="{{ 'form.login.password'|trans }}" autocomplete="current-password" required>
+                        <label for="floatingPassword">{{ 'form.login.password'|trans }}</label>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="d-grid gap-2 col-6">
+                        <button class="btn btn-primary" type="submit">{{ 'form.login.submit'|trans }}</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>       
+    </div>
+</section>
+
+{% endblock %}

@@ -5,6 +5,10 @@ navbar.portfolio: Portfolio
 navbar.team: Team
 navbar.contact: Contact
 navbar.signin: Connexion
+navbar.admin.title: Admin
+navbar.admin.welcome: Hello Admin!
+navbar.admin.inbox: Inbox
+navbar.admin.logout: Logout
 
 hero.title: Better solutions for your business
 hero.text: If you liked it? Do not hesitate to contact me, I am looking for a job ;)'
@@ -18,8 +22,16 @@ form.contact.lastname: Lastname
 form.contact.email: Email
 form.contact.message: Type your message here...
 form.contact.submit: Send
+form.login.loggedInAs: You're logged as %identifier%
+form.login.logout: Logout
+form.login.title: Please sign in
+form.login.email: Email
+form.login.password: Password
+form.login.submit: Connexion
 
 page.home.title: Demo site
+page.login.title: Connexion
+page.admin.title: Administration
 
 flash.message.send.success: Your message has been sent
 mailer.subject: Contact request from %email%
