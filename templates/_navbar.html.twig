@@ -19,7 +19,7 @@
                         <ul class="dropdown-menu">
                             <li class="dropdown-item title">{{ 'navbar.admin.welcome'|trans({'%name%': app.user.pseudo}) }}</li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ path('admin_home') }}">Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ path('admin_inbox') }}">{{ 'navbar.admin.inbox'|trans }}</a></li>
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'navbar.admin.logout'|trans }}</a></li>
                         </ul>
                     </li>

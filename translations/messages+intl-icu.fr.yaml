@@ -1,0 +1,6 @@
+notif.nb_message: >-
+  {count, plural,
+    =0 {aucun message}
+    one {1 message}
+    other {# messages}
+  }

@@ -1,0 +1,147 @@
+{% extends 'base-light.html.twig' %}
+
+{% block title %}{{ 'page.admin.title'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/admin.css">
+{% endblock %}
+
+{% block body %}
+<section class="first-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <h1 class="h3 mb-3"><i class="fa fa-inbox"></i> {{ 'inbox.title'|trans }}</h1>
+
+            <!-- INBOX -->
+            <div class="card border-light shadow mb-20">   
+                <div class="row g-0">
+
+                    <!-- LEFT COL -->
+                    <div class="col-12 col-lg-5 col-xl-4 border-end">
+
+                        <!-- Search -->
+                        <div class="px-4 d-none d-md-block">
+                            <div class="d-flex align-items-end">
+                                <div class="flex-grow-1">
+                                    <input type="text" class="form-control my-3" placeholder="{{ 'inbox.action.search'|trans }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown Button -->
+                        <div class="px-4 d-none d-md-block mb-2">
+                            <div class="d-flex">
+                                <div class="btn-group ms-auto">
+                                    <button type="button" class="btn btn-secondary">{{ 'inbox.menu.all'|trans }}</button>
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-download"></i> {{ 'inbox.menu.inbox'|trans }} ({{ contacts|length }})</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-upload"></i> {{ 'inbox.menu.outbox'|trans }}</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash-o"></i> {{ 'inbox.menu.trash'|trans }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contasts list -->
+                        <div class="list-contact overflow-auto">     
+                            <div class="list-group list-group-flush border-top">
+                                {% for contact in contacts %}
+                                <a href="{{ path('admin_list_message', {'id': contact.id}) }}" class="list-group-item list-group-item-action border-start-0 border-end-0 {% if currentContact == contact.id %}active{% endif %}">
+                                    <h5 class="list-group-item-heading">{{ contact.fullname }}</h5>
+                                    <p class="list-group-item-text">
+                                    {{ 'inbox.ticket.num'|trans({'%num%': contact.id})|raw }} : <strong>{{ 'notif.nb_message'|trans({'count': contact.messages|length}) }}</strong>
+                                    </p>
+                                    <div class="d-flex">
+                                        <div class="p-2">
+                                            <small>{{ contact.createdAt|date('j M H:i') }}</small>
+                                        </div>
+                                        <div class="ms-auto p-2">   
+                                            <span class="badge bg-secondary float-end">{{ 'inbox.badge.new'|trans|upper }}</span>    
+                                        </div>
+                                    </div> 
+                                </a>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- RIGHT COL -->
+                    <div class="col-12 col-lg-7 col-xl-8">	
+
+                        <!-- Header -->
+                        <div class="py-2 px-4 border-bottom d-none d-lg-block">
+                            <div class="d-flex align-items-center py-1">
+                                <div class="position-relative">
+                                    <img src="https://api.multiavatar.com/{{ messages.0.contactUser.fullname }}.svg" class="rounded-circle me-1" width="40" height="40">
+                                </div>
+                                <div class="flex-grow-1 ps-3">
+                                    <strong>{{ messages.0.contactUser.fullname }}</strong>
+                                    <div class="text-muted small"><em>{{ messages.0.contactUser.email }}</em></div>
+                                </div>
+                                <div>
+                                    {# <button class="btn btn-primary btn-lg px-3" data-bs-toggle="tooltip" title="{{ 'inbox.action.reply'|trans }}"><i class="fa fa-reply"></i></button> #}
+                                    <button class="btn btn-light border btn-lg px-3 text-black-50"><i class="fa fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Messages list -->
+                        <div class="position-relative">
+                            <div class="inbox-messages p-4">
+                                {% for message in messages %}
+                                <div class="inbox-message-left pb-4">
+                                    <div>
+                                        <img src="https://api.multiavatar.com/{{ message.contactUser.fullname }}.svg" class="rounded-circle me-1" width="40" height="40">
+                                        <div class="text-muted small text-nowrap mt-2">{{ message.createdAt|date('H:i') }}</div>
+                                    </div>
+                                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ms-3">
+                                        <div class="font-weight-bold mb-1">{{ message.contactUser.fullname }}</div>
+                                        {{ message.message }}
+                                    </div>
+                                    <div class="ms-auto">
+                                        {% if message.isProcessed == true %}
+                                            <a href="{{ path('admin_message_process', {'id': message.contactUser.id, 'messageId': message.id}) }}" data-bs-toggle="tooltip" title="{{ 'inbox.action.markUnprocessed'|trans }}"><i class="bi bi-toggle2-on fs-3 text-success"></i></a> 
+                                            {# <a href="{{ path('admin_message_process', {'id': message.contactUser.id, 'messageId': message.id}) }}" class="btn btn-light border btn-sm px-3 text-black" data-bs-toggle="tooltip" title="{{ 'inbox.action.markUnprocessed'|trans }}"><i class="fa fa-check"></i></a> #}
+                                            <span class="badge bg-success">{{ 'inbox.badge.processed'|trans|upper }}</span> 
+                                        {% else %}  
+                                            <a href="{{ path('admin_message_process', {'id': message.contactUser.id, 'messageId': message.id}) }}" data-bs-toggle="tooltip" title="{{ 'inbox.action.markProcessed'|trans }}"><i class="bi bi-toggle2-off fs-3 text-secondary"></i></a> 
+                                            {# <a href="{{ path('admin_message_process', {'id': message.contactUser.id, 'messageId': message.id}) }}" class="btn btn-light border btn-sm px-3 text-black-50" data-bs-toggle="tooltip" title="{{ 'inbox.action.markProcessed'|trans }}"><i class="fa fa-check"></i></a> #}
+                                            <span class="badge bg-secondary ">{{ 'inbox.badge.unprocessed'|trans|upper }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        <!-- Help alert -->
+                        <div class="alert alert-warning alert-dismissible fade show mx-4" role="alert">
+                            {{ 'alert.inbox.tip.process'|trans|raw }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'alert.button.close'|trans }}"></button>
+                        </div>
+
+                        <!-- Reply form -->
+                        <div class="flex-grow-0 py-3 px-4 border-top">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="{{ 'form.contact.message'|trans }}">
+                                <button class="btn btn-primary">{{ 'form.contact.submit'|trans }}</button>
+                            </div>
+                        </div>                  
+
+                    </div>
+                </div>
+            </div>
+            <!-- END INBOX --> 
+        </div>   
+    </div>
+</section>
+{% endblock %}
+

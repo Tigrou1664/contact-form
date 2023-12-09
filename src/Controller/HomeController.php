@@ -68,6 +68,8 @@ class HomeController extends AbstractController
             );
 
             flash()->addSuccess($translator->trans('flash.message.send.success'));
+
+            return $this->redirectToRoute('app_home');
         }
         return $this->render('pages/home.html.twig', [
             'form' => $form->createView()

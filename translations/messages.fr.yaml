@@ -33,6 +33,26 @@ page.home.title: Site de démo
 page.login.title: Connexion
 page.admin.title: Administration
 
+inbox.title: Demandes
+inbox.ticket.num: id &#35;%num%
+inbox.menu.all: Tous les messages
+inbox.menu.inbox: Reçus
+inbox.menu.outbox: Envoyés
+inbox.menu.trash: Supprimés
+inbox.action.markProcessed: Marquer comme traité
+inbox.action.markUnprocessed: Marquer comme non traité
+inbox.action.delete: Supprimer
+inbox.action.search: Recherche...
+inbox.action.reply: Répondre
+
+inbox.badge.new: Nouveau
+inbox.badge.processed: Traité
+inbox.badge.unprocessed: Non traité
+
+flash.message.update.success: Les messages ont été mis à jour
 flash.message.send.success: Votre message a bien été envoyé
 mailer.subject: Demande de contact de %email%
 mailer.content: '%name% vous a envoyé le message suivant : '
+
+alert.inbox.tip.process: <strong>Actuce !</strong> Cliquez sur le bouton <i class="bi bi-toggle2-off fs-5 text-secondary"></i> pour passer le message en traité/non traité.
+alert.button.close: Fermer

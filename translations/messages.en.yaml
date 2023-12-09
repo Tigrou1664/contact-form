@@ -33,6 +33,26 @@ page.home.title: Demo site
 page.login.title: Connexion
 page.admin.title: Administration
 
+inbox.title: Requests
+inbox.ticket.num: id &#35;%num%
+inbox.menu.all: All messages
+inbox.menu.inbox: Received
+inbox.menu.outbox: Sent
+inbox.menu.trash: Deleted
+inbox.action.markProcessed: Mark as processed
+inbox.action.markUnprocessed: Mark as unprocessed
+inbox.action.delete: Delete
+inbox.action.search: Search...
+inbox.action.reply: Reply
+
+inbox.badge.new: New
+inbox.badge.processed: Processed
+inbox.badge.unprocessed: Unprocessed
+
+flash.message.update.success: Messages have been updated
 flash.message.send.success: Your message has been sent
 mailer.subject: Contact request from %email%
 mailer.content: '%name% sent you the following message: '
+
+alert.inbox.tip.process: <strong>Tip !</strong> Click on button <i class="bi bi-toggle2-off fs-5 text-secondary"></i> to switch status between processed/unprocessed.
+alert.button.close: Close
