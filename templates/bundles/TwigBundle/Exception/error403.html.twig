@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page.denied.title'|trans }}{% endblock %}
+
+{% block body %}
+
+<!-- 403 SECTION -->
+<section id="hero" class="first-section d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <h1 class="h3 mb-3 font-weight-normal text-white">{{ 'page.denied.title'|trans }}</h1>
+                <h2>{{ 'page.denied.description'|trans }}</h2>
+                <a href="{{ path('app_home') }}" class="btn-get-started scrollto"><i class="fa fa-chevron-right"></i> {{ 'button.home'|trans }}</a>
+            </div>
+        </div>   
+    </div>
+</section>
+
+{% endblock %}

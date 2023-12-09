@@ -15,6 +15,7 @@ hero.text: If you liked it? Do not hesitate to contact me, I am looking for a jo
 
 button.getStarted: Get Started
 button.watchVideo: Watch video
+button.home: Go back home
 
 form.contact.title: Contact-us
 form.contact.firstname: Firstname
@@ -32,6 +33,10 @@ form.login.submit: Connexion
 page.home.title: Demo site
 page.login.title: Connexion
 page.admin.title: Administration
+page.denied.title: Access denied
+page.denied.description: You don't have permission to access this page
+page.notfound.title: Oups...
+page.notfound.description: Sorry, we can't find what you're looking for!
 
 inbox.title: Requests
 inbox.ticket.num: id &#35;%num%

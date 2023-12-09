@@ -15,6 +15,7 @@ hero.text: Si ça vous a plu ? N'hésitez pas à me contacter, je suis à la rec
 
 button.getStarted: Démarrez
 button.watchVideo: Lancez vidéo
+button.home: Accueil du site
 
 form.contact.title: Contactez-nous
 form.contact.firstname: Prénom
@@ -32,6 +33,10 @@ form.login.submit: Connexion
 page.home.title: Site de démo
 page.login.title: Connexion
 page.admin.title: Administration
+page.denied.title: Accès refusé
+page.denied.description: Vous n'avez pas le droit d'aller ici !
+page.notfound.title: Oups...
+page.notfound.description: Désolé, nous ne trouvons pas ce que vous cherchez !
 
 inbox.title: Demandes
 inbox.ticket.num: id &#35;%num%
