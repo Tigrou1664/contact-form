@@ -1,5 +1,7 @@
 
 ###> symfony/framework-bundle ###
+/.idea
+/.vscode
 /.env
 /.env.local
 /.env.local.php
