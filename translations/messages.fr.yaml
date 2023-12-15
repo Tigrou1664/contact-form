@@ -54,10 +54,10 @@ inbox.badge.new: Nouveau
 inbox.badge.processed: Traité
 inbox.badge.unprocessed: Non traité
 
+inbox.message.empty: Pas de messages
+
 flash.message.update.success: Les messages ont été mis à jour
 flash.message.send.success: Votre message a bien été envoyé
-mailer.subject: Demande de contact de %email%
-mailer.content: '%name% vous a envoyé le message suivant : '
 
 alert.inbox.tip.process: <strong>Actuce !</strong> Cliquez sur le bouton <i class="bi bi-toggle2-off fs-5 text-secondary"></i> pour passer le message en traité/non traité.
 alert.button.close: Fermer

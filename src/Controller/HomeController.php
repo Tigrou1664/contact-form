@@ -50,14 +50,11 @@ class HomeController extends AbstractController
             // Save mesage to json
             $messageToJson->save($contactMessage);
 
-            // Send email to admin
+            // Send email (to admin if param 'to' not specified)
             $mailer->sendEmail(
-                subject: $translator->trans('mailer.subject', [
-                    '%email%' => $contactMessage->getContactUser()->getEmail(),
-                ]),
-                content: $translator->trans('mailer.content', [
-                    '%name%' => $contactMessage->getContactUser()->getFullname(),
-                ]) . $contactMessage->getMessage()
+                from: $contactMessage->getContactUser()->getEmail(),
+                subject: 'Demande de contact',
+                content: $contactMessage->getMessage()
             );
 
             flash()->addSuccess($translator->trans('flash.message.send.success'));

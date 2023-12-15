@@ -54,10 +54,10 @@ inbox.badge.new: New
 inbox.badge.processed: Processed
 inbox.badge.unprocessed: Unprocessed
 
+inbox.message.empty: No messages
+
 flash.message.update.success: Messages have been updated
 flash.message.send.success: Your message has been sent
-mailer.subject: Contact request from %email%
-mailer.content: '%name% sent you the following message: '
 
 alert.inbox.tip.process: <strong>Tip !</strong> Click on button <i class="bi bi-toggle2-off fs-5 text-secondary"></i> to switch status between processed/unprocessed.
 alert.button.close: Close

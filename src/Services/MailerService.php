@@ -8,7 +8,7 @@ use Symfony\Component\Mime\Email;
 class MailerService
 {
     private const ADMIN_EMAIL = 'admin@test.fr';
-    private const FROM_EMAIL = 'noreply@test.fr';
+    private const NOREPLY_EMAIL = 'noreply@test.fr';
 
     private MailerInterface $mailer;
 
@@ -20,14 +20,21 @@ class MailerService
     /**
      * Service to send email
      */
-    public function sendEmail($to = self::ADMIN_EMAIL, $subject = '', $content = '', $text = ''): void
+    public function sendEmail(
+        $from = self::NOREPLY_EMAIL,
+        $to = self::ADMIN_EMAIL,
+        $subject = '',
+        $content = '',
+        $text = ''
+    ): void
     {
         $email = (new Email())
-            ->from(self::FROM_EMAIL)
+            ->from($from)
             ->to($to)
             ->subject($subject)
             ->text($text)
             ->html($content);
+
         $this->mailer->send($email);
     }
 }
