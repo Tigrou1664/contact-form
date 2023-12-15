@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ContactMessage;
 use App\Entity\ContactUser;
 use App\Form\ContactMessageType;
+use App\Services\MessageToJsonService;
 use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -18,7 +19,14 @@ class HomeController extends AbstractController
 {
 
     #[Route('/', name: 'app_home')]
-    public function index(Request $request, EntityManagerInterface $manager, MailerService $mailer, LoggerInterface $logger, TranslatorInterface $translator): Response
+    public function index(
+        Request $request,
+        EntityManagerInterface $manager,
+        MailerService $mailer,
+        MessageToJsonService $messageToJson,
+        LoggerInterface $logger,
+        TranslatorInterface $translator
+    ): Response
     {
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
@@ -39,23 +47,8 @@ class HomeController extends AbstractController
             $manager->persist($contactMessage);
             $manager->flush();
 
-            // Save json in directory
-            $filename = $this->getParameter('app.message_path') . 'message-' . $contactMessage->getCreatedAt()->format('Y-m-d H:i:s') . '.json';
-            if (!file_exists($filename)) {
-                try {
-                    mkdir($this->getParameter('app.message_path'), 0755, true);
-                } catch (\Exception $e) {
-                    $logger->error('Error creating new dir ...', [
-                        'filename' => $filename,
-                        'error' => $e,
-                    ]);
-                }
-            }
-            try {
-                file_put_contents($filename, $contactMessage->jsonSerialize());
-            } catch (\Exception $e) {
-                $logger->error('Error putting content ...', ['error' => $e]);
-            }
+            // Save mesage to json
+            $messageToJson->save($contactMessage);
 
             // Send email to admin
             $mailer->sendEmail(
