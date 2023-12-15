@@ -68,7 +68,6 @@
                                 
                             </div>
                         </div>
-
                         
                     </div>
 
@@ -77,6 +76,7 @@
 
                         <!-- Header -->
                         <div class="py-2 px-4 border-bottom d-none d-lg-block">
+                            {% if messages is defined and messages is not null %}
                             <div class="d-flex align-items-center py-1">
                                 <div class="position-relative">
                                     <img src="https://api.multiavatar.com/{{ messages.0.contactUser.fullname }}.svg" class="rounded-circle me-1" width="40" height="40">
@@ -90,6 +90,7 @@
                                     <button class="btn btn-light border btn-lg px-3 text-black-50"><i class="fa fa-cog"></i></button>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
 
                         <!-- Messages list -->
@@ -116,6 +117,10 @@
                                             <span class="badge bg-secondary ">{{ 'inbox.badge.unprocessed'|trans|upper }}</span>
                                         {% endif %}
                                     </div>
+                                </div>
+                                {% else %}
+                                <div class="inbox-message-left pb-4">
+                                    <p>{{ 'inbox.message.empty'|trans }}</p>
                                 </div>
                                 {% endfor %}
 

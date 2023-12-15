@@ -41,6 +41,10 @@ class AdminController extends AbstractController
         // List all contacts
         $contacts = $this->entityManager->getRepository(ContactUser::class)->findBy([], ['createdAt' => 'DESC']);
 
+        if(!$contacts) {
+            throw $this->createNotFoundException('Contacts not found!');
+        }
+
         // Get message of the first contact
         $messages = $contacts[0]->getMessages();
 
@@ -60,7 +64,11 @@ class AdminController extends AbstractController
         // List all contacts
         $contacts = $this->entityManager->getRepository(ContactUser::class)->findBy([], ['createdAt' => 'DESC']);
 
-        // Get the contact by id
+        if(!$contacts) {
+            throw $this->createNotFoundException('Contacts not found!');
+        }
+
+        // Get messages by contact id
         $messages = $this->entityManager->getRepository(ContactMessage::class)->findBy(['contactUser' => $id], ['createdAt' => 'ASC']);
 
         return $this->render('admin/messages.html.twig', [
